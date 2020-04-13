@@ -20,7 +20,7 @@ ON (ri.emp_no = t.emp_no)
 INNER JOIN salaries AS s
 ON (t.emp_no = s.emp_no);
 
-#### Exammple:
+### Example:
 | emp_no | first_name | last_name | title | from_date | salary | 
 | :---: | :---: | :---: | :---: | :---: | :---: | 
 | 10001 | Georgi | Facello | Senior Engineer | 1986-06-26 | 60117 | 
@@ -34,6 +34,7 @@ ORDER BY from_date DESC;
 | :---: | :---: | :---: | :---: | :---: | :---: | 
 | 206731 | Fuoc | Ramras | Senior Engineer | 2002-08-01 | 47835 | 
 
+
 SELECT * FROM
   (SELECT *, count(*)
   OVER
@@ -43,11 +44,12 @@ SELECT * FROM
     ) AS count
   FROM mentor_info) tableWithCount
   WHERE tableWithCount.count > 1;
-  
+
  ### Example:
 | emp_no | first_name | last_name | title | from_date | salary | count |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---:|
 | 61761 | Aamer | Feinberg | Senior Staff | 1999-11-03 | 45996 | 2 |
+
  
 SELECT DISTINCT ON (first_name, last_name) * FROM mentor_info;
 
@@ -56,11 +58,13 @@ SELECT DISTINCT ON (first_name, last_name) * FROM mentor_info;
 | :---: | :---: | :---: | :---: | :---: | :---: | 
 | 50814 | Aamer | Daescu | Senior Engineer | 1988-09-16 | 49220 |
 
+
 DELETE FROM mentor_info WHERE mentor_info.emp_no NOT IN 
 (SELECT emp_no FROM (
     SELECT DISTINCT ON (first_name, last_name) *
   FROM mentor_info) AS emp_no);
  ### Deleted duplicates.
+ 
  
 SELECT COUNT(m.emp_no), m.title
 INTO per_title
@@ -69,10 +73,10 @@ GROUP BY m.title
 ORDER BY m.title;
 
 ### Example:
-
 | count | title |  
 | :---: | :---: | 
 | 1611 | Assistant Engineer |
+
 
 SELECT e.emp_no,
 	e.first_name,
@@ -86,6 +90,8 @@ INNER JOIN titles as t
 ON (e.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 	AND t.to_date = ('9999-01-01');
+
+### Example:
   
 | emp_no | first_name | last_name | title | from_date | to_date | 
 | :---: | :---: | :---: | :---: | :---: | :---: | 
