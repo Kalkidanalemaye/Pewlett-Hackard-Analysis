@@ -1,8 +1,9 @@
 # Pewlett-Hackard-Analysis
 ## Brief project summary
-### To obtain the potential employees who are retiring and stay as mentors I took information from the current employees table such as their first name and last name. And joined the retirement info table with only employee number. I also joined the titles and salaries tables to include those colums in the final table. 
-### For the most recent data of mentors I used the count, distint on and partition by functions in order to remove duplicate values.
-### Lastly, for employees who are ready for mentors: I added the focus columns and filtered it with the function 'where' by birth date and to date. The filter returns current employees who will be ready to fill in the positions of the retirees. 
+To obtain the potential employees who are retiring and stay as mentors I took information from the current employees table such as their first name and last name. And joined the retirement info table with only employee number. I also joined the titles and salaries tables to include those colums in the final table. 
+For the most recent data of mentors I used the count, distint on and partition by functions in order to remove duplicate values.
+Lastly, for employees who are ready for mentors: I added the focus columns and filtered it with the function 'where' by birth date and to date. The filter returns current employees who will be ready to fill in the positions of the retirees. 
+
 ![ERD](EmployeeDB2.png)
 
 SELECT ri.emp_no,
